@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reactive Shapes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three":    "https://esm.sh/three@0.158.0",
+      "cannon-es": "https://esm.sh/cannon-es@0.20.0"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <div id="canvas-container"></div>
+
+  <!-- ─── UI Panel ──────────────────────────────────────────────────── -->
+  <div id="ui-panel">
+    <div class="panel-header">
+      <span class="panel-title">Reactive Shapes</span>
+      <button id="panel-toggle" class="icon-btn" title="Collapse panel">◀</button>
+    </div>
+
+    <div class="panel-content">
+
+      <!-- Input Mode -->
+      <div class="control-group">
+        <label class="group-label">Input Mode</label>
+        <div class="toggle-row">
+          <button id="mic-mode-btn"   class="mode-btn active" data-mode="microphone">🎤 Mic</button>
+          <button id="click-mode-btn" class="mode-btn"        data-mode="click">🖱 Click</button>
+        </div>
+      </div>
+
+      <!-- Microphone Controls -->
+      <div id="mic-controls" class="control-group">
+        <label class="group-label">Microphone</label>
+        <button id="mic-toggle" class="action-btn">Start Listening</button>
+
+        <div class="slider-row">
+          <span>Sens</span>
+          <input type="range" id="sensitivity" min="0.2" max="4" step="0.1" value="1">
+          <span id="sensitivity-val">1.0</span>
+        </div>
+
+        <div class="meter-container">
+          <div class="meter-label">Level</div>
+          <div class="meter-track">
+            <div id="sound-meter" class="meter-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Physics -->
+      <div class="control-group">
+        <label class="group-label">Physics</label>
+
+        <div class="slider-row">
+          <span>Force</span>
+          <input type="range" id="force-mult" min="0.5" max="5" step="0.1" value="1.5">
+          <span id="force-val">1.5</span>
+        </div>
+
+        <div class="slider-row">
+          <span>Gravity</span>
+          <input type="range" id="gravity" min="-50" max="-3" step="1" value="-20">
+          <span id="gravity-val">-20</span>
+        </div>
+      </div>
+
+      <!-- Surface Mode -->
+      <div class="control-group">
+        <label class="group-label">Surface</label>
+        <div class="toggle-row">
+          <button id="solid-btn"     class="mode-btn active" data-surface="solid">Solid</button>
+          <button id="malleable-btn" class="mode-btn"        data-surface="malleable">Malleable</button>
+        </div>
+        <div id="malleable-hint" class="hint hidden">
+          Drag to sculpt · Right-drag pushes down
+        </div>
+      </div>
+
+      <!-- Color Palette -->
+      <div class="control-group">
+        <label class="group-label">Color Palette</label>
+        <div id="palette-row" class="palette-row"></div>
+      </div>
+
+      <!-- Background -->
+      <div class="control-group">
+        <label class="group-label">Background</label>
+        <div class="color-row">
+          <input type="color" id="bg-color" value="#1a1a2e">
+          <span style="font-size:11px;color:var(--text-dim)">Scene background &amp; fog</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="control-group">
+        <button id="reset-btn" class="action-btn danger">↺ Reset Scene</button>
+      </div>
+
+      <!-- Performance -->
+      <div class="perf-bar">
+        <span id="fps-display">FPS: —</span>
+        <span id="cube-count">Cubes: 0</span>
+      </div>
+
+    </div><!-- /.panel-content -->
+  </div><!-- /#ui-panel -->
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
