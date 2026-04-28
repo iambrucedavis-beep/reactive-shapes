@@ -23,7 +23,7 @@ export class UIManager {
     // Mic start/stop
     this._el('mic-toggle').addEventListener('click', async () => {
       if (!app.state.isListening) {
-        const ok = await app.audioManager.start()
+        const ok = await app.audio.start()
         if (ok) {
           app.state.isListening = true
           this._el('mic-toggle').textContent = 'Stop Listening'
@@ -32,7 +32,7 @@ export class UIManager {
           this._el('mic-toggle').textContent = 'Mic unavailable'
         }
       } else {
-        app.audioManager.stop()
+        app.audio.stop()
         app.state.isListening = false
         this._el('mic-toggle').textContent = 'Start Listening'
         this._el('mic-toggle').classList.remove('active')
