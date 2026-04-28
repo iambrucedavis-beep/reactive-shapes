@@ -58,14 +58,14 @@ html, body {
 }
 
 #ui-panel.collapsed {
-  transform: translateX(calc(var(--panel-w) - 40px));
+  transform: translateX(calc(var(--panel-w) - 48px));
 }
 
 /* ─── Panel Header ──────────────────────────────────────────────────── */
 .panel-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
   padding: 16px 14px 12px;
   border-bottom: 1px solid var(--panel-border);
   flex-shrink: 0;

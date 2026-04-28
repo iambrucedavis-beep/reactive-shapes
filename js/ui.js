@@ -124,7 +124,7 @@ export class UIManager {
     const panel = document.getElementById('ui-panel')
     const btn = this._el('panel-toggle')
     panel.classList.toggle('collapsed', this._collapsed)
-    btn.textContent = this._collapsed ? '▶' : '◀'
+    btn.textContent = this._collapsed ? '◀' : '▶'
   }
 
   // Called from main loop at ~2 fps
